@@ -9,7 +9,7 @@ class Link:
         self.collection_url = collection_url
         self.link = link
         self.get_collection_id(collection_url)
-        self.create()
+        # self.create()
 
     def get_collection_id(self, collection_url):
         self.auth.s.headers = self.auth.headers_default
