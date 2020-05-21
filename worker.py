@@ -10,15 +10,19 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def main():
 
-    config = configparser.ConfigParser()
-    config.optionxform = str
-    config.read('settings.ini')
+    auth = configparser.ConfigParser()
+    auth.optionxform = str
+    auth.read('auth.ini')
+
+    settings = configparser.ConfigParser()
+    settings.optionxform = str
+    settings.read('settings.ini')
 
     # создадим объект аторизации
     a = Authentication(
-        config['Authorization']['Login'],
-        config['Authorization']['Password'],
-        dict(config['Browser Headers'])
+        auth['Authorization']['Login'],
+        auth['Authorization']['Password'],
+        dict(settings['Browser Headers'])
     )
     print(a.uid)
 
